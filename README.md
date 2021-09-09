@@ -7,5 +7,5 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 ## Credits
 
 [Veritasium: this equation will change how you see the world](https://www.youtube.com/watch?v=ovJcsL7vyrk)
-
+[Vsauce: the Mandelbrot Set](https://www.youtube.com/watch?v=MwjsO6aniig)
 
