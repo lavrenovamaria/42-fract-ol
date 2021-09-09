@@ -2,10 +2,6 @@
 ## Discover 2D programming and the psychedelic universe of fractals in this project, using minilibX.
 
 <p align="center">
-	[giphy (2)](https://user-images.githubusercontent.com/84707645/132736988-dbdd08fe-eef1-4c0d-8e70-c6401aab27c6.gif)
-</p>
-
-<p align="center">
 	<img  src="https://user-images.githubusercontent.com/84707645/132736988-dbdd08fe-eef1-4c0d-8e70-c6401aab27c6.gif" width="400" height="400" />
 </p>
 
