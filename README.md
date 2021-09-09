@@ -2,7 +2,7 @@
 ## Discover 2D programming and the psychedelic universe of fractals in this project, using minilibX.
 
 <p align="center">
-	<img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mandelbrot_sequence_new.gif/220px-Mandelbrot_sequence_new.gif"/>
+	[giphy (2)](https://user-images.githubusercontent.com/84707645/132736988-dbdd08fe-eef1-4c0d-8e70-c6401aab27c6.gif)
 </p>
 
 Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/42-fract-ol/files/7128672/en.subject.pdf)
