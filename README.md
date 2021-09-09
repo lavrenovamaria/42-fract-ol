@@ -10,3 +10,8 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 
 * [Vsauce: the Mandelbrot Set](https://www.youtube.com/watch?v=MwjsO6aniig)
 
+## Installation
+```
+$> make
+$> ./fractol_name
+```
