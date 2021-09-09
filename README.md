@@ -6,5 +6,5 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 
 ## Credits
 
-* [This equation will change how you see the world (the logistic map)]: https://www.youtube.com/watch?v=ovJcsL7vyrk
+[This equation will change how you see the world (the logistic map)]: https://www.youtube.com/watch?v=ovJcsL7vyrk
 
