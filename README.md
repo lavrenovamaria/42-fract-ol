@@ -15,6 +15,8 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 
 * [Getting started](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
 
+* [MiniLibX. Basic introduction, tutorials, tips & tricks.](https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html) 
+
 ## Usage
 
 * `make` to compile this project.
