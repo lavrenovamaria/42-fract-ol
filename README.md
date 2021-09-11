@@ -13,7 +13,7 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 
 * [Vsauce: the Mandelbrot Set](https://www.youtube.com/watch?v=MwjsO6aniig)
 
-* [Getting started](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
+* [42Docs. MiniLibX. Getting started](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
 
 * [MiniLibX. Basic introduction, tutorials, tips & tricks.](https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html) 
 
