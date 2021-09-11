@@ -17,6 +17,8 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 
 * [MiniLibX. Basic introduction, tutorials, tips & tricks.](https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html) 
 
+* [RGBA color model](https://en.wikipedia.org/wiki/RGBA_color_model#Representation)
+
 ## Usage
 
 * `make` to compile this project.
