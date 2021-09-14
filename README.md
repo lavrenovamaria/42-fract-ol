@@ -19,7 +19,7 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 
 * [RGBA color model](https://en.wikipedia.org/wiki/RGBA_color_model#Representation)
 
-## Usage
+## Usage 
 
 * `make` to compile this project.
 * `./fractol_name`
