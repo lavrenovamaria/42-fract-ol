@@ -60,14 +60,24 @@ int	close_window(int keycode, t_vars *vars)
 
 }
 
+//int get_coord_from_center(int x, int x_center)
+//{
+//	x -= x_center;
+//}
+
 int main(void)
 {
 	int x_coor = 1;
 	int y_coor = 1;
+	int x;
+	int y;
 	double rad = 0;
 	t_data img;
 	t_vars vars;
 	int color;
+	int c;
+
+	int r = 5;
 
 
 	vars.mlx_ptr = mlx_init();
@@ -79,19 +89,28 @@ int main(void)
 	int center_y = MAX_Y / 2;
 	while (y_coor < MAX_Y)
 	{
+		y = y_coor - center_y;
+		x_coor = 1;
 		while (x_coor < MAX_X)
 		{
+			x = x_coor - center_x;
+			c = x * x + y * y;
+//			printf("x = %d, y = %d, c = %d\n", x, y, c);
+			if (c > ((r - 1) * (r - 1)) && c < ((r + 1)*(r + 1)))
+			{
+				my_mlx_pixel_put(&img, x_coor, y_coor, 0x00FFFFFF);
+			}
 			x_coor++;
 		}
 		y_coor++;
 	}
-	int r =	
-	int c = pow((x_coor - center_x), 2) + pow((y_coor - center_y), 2);
-	if (c == r)
-	{
-		color = 0x00FFFFFF;
-		my_mlx_pixel_put(&img, x_coor, y_coor, color);
-	}
+//	int r =
+//	int c = pow((x_coor - center_x), 2) + pow((y_coor - center_y), 2);
+//	if (c == r)
+//	{
+//		color = 0x00FFFFFF;
+//		my_mlx_pixel_put(&img, x_coor, y_coor, color);
+//	}
 
 	// while (y_coor < 500)
 	// {
