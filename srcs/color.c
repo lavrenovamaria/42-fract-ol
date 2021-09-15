@@ -31,25 +31,6 @@ int	press_esc_key(int key, void *p)
 		exit(0);
 	return 0;
 }
-int	key_check(int key,void *p)
-{
-	printf("Key in Win : %d\n",key);
-	if (key==0xFF1B)
-		exit(0);
-	return 0;
-}
-
-int	mouse_pos(int x,int y, void *p)
-{
-	printf("Mouse moving in Win, at %dx%d.\n",x,y);
-	return 0;
-}
-
-int	mouse_button(int button,int x,int y, void *p)
-{
-	printf("Mouse_button in Win, button %d at %dx%d.\n",button,x,y);
-	return 0;
-}
 
 int	color_map(void *win, int w, int h)
 {
@@ -62,7 +43,7 @@ int	color_map(void *win, int w, int h)
 		y = h;
 		while (y--)
 		{
-			color = (x * 255)/w+((((w - x) * 255)/w) << 16)+(((y * 255)/h) << 8);
+			color = (x * 255)/ w + ((((w - x) * 255)/w) << 16) + (((y * 255)/ h) << 8);
 				mlx_pixel_put(mlx,win,x,y,color);
 		}
 	}

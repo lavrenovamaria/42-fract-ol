@@ -102,9 +102,15 @@ int main(void)
 	for (i = 300, k = 0; i < 350; i++, k += 2)
 	{
 	  for (j = 150 + k; j < 250; j++)
-	    my_mlx_pixel_put(&img, i, j, 0xABEFCD);
+	    my_mlx_pixel_put(&img, i, j, 0x00FF0000);
 	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 	return (0);
 }
+
+// ----------CIRCLE----------
+// int main(void)
+// {
+
+// }
