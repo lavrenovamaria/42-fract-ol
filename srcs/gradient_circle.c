@@ -44,6 +44,7 @@ int	color_map(void *win, int w, int h)
 		while (y--)
 		{
 			color = (x * 255)/ w + ((((w - x) * 255)/w) << 16) + (((y * 255)/ h) << 8);
+			if (((x - 250) * (x - 250)) + ((y - 250) * (y - 250)) <= 20000)
 				mlx_pixel_put(mlx,win,x,y,color);
 		}
 	}
