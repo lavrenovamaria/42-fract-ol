@@ -25,7 +25,7 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 The Mandelbrot set with the real and imaginary axes labeled.
 
 ```
-typedef struct	s_complex
+typedef struct		s_complex
 {
 	double			re;
 	double			im;
