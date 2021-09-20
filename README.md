@@ -30,7 +30,6 @@ typedef struct		s_complex
 	double			re;
 	double			im;
 }			t_complex;
-
 ```
 
 ## Usage 
