@@ -79,8 +79,10 @@ typedef struct		s_data {
 }			t_data;
 
 ```
-Since pixel is basically an int type, it is 4 bytes. But this can be different if we are dealing with small endian. `bits_per_pixel` is total number of bits stored for each pixel in a graphic image.
+Since pixel is basically an int type, it is 4 bytes. But this can be different if we are dealing with small endian. `bits_per_pixel` is total number of bits stored for each pixel in a graphic image. We also need to understand that bytes are not aligned, so `line_length` may be different from the actual window width. So we need `mlx_get_data_addr` to compute the memory address offset with the line lenght set through. 
 
+We can get it with the following formula:
+int offset = (y * line_length + x * (bits_per_pixel / 8));
 
 ```c
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
