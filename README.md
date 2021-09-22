@@ -112,6 +112,9 @@ Finally, we can draw an image inside a specific window with a `mlx_put_image_to_
 
 In order to receive input from keyboard/mouse/etc. in MiniLibX, you need to know the concept of [events](https://en.wikipedia.org/wiki/Event_(computing)). An event is an action or event that can be detected and handled by a program. miniLibX `mlx_loop()` needs a loop statement to handle events. This function waits for an event to be received and generates the event.
 
+`int mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct_ptr)(), void *param);`
+* First, specify the identifier of the window for which you want to generate an event, then specify the event [status](https://refspecs.linuxfoundation.org/LSB_3.2.0/LSB-Desktop-generic/LSB-Desktop-generic/libx11-ddefs.html), then mask, next parameter is a function pointer parameter that receives the address of the function to be executed when the corresponding event occurs, and last is a parameter that sends parameter data necessary for the function called with.
+
 ## Usage 
 
 * `make` to compile this project.
