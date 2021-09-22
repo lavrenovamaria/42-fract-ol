@@ -34,6 +34,31 @@ typedef struct		s_complex
 }			t_complex;
 ```
 
+## Let's draw a pixel on the screen!
+
+1. Initializing
+Before doing anything, we need to include <mlx.h> library. This is because all functions can be accesed
+```
+typedef struct		s_data {
+	void	*img;
+	char	*addr;
+	int	bits_per_pixel;
+	int	line_length;
+	int	endian;
+}			t_data;
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+```
+We will use `my_mlx_pixel_put` because `mlx_pixel_put` is very, very slow. This is because when you put a pixel on the window, it immidiately loads the frame before it is fully rendered. For this reason we will buffer all pixels before loading them into the window. 
+
+
+
 ## Usage 
 
 * `make` to compile this project.
