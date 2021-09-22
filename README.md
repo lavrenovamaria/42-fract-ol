@@ -110,7 +110,7 @@ Finally, we can draw an image inside a specific window with a `mlx_put_image_to_
 
 ### 4. Using keyboard
 
-In order to receive input from keyboard/mouse/etc. in MiniLibX, you need to know the concept of [events](https://en.wikipedia.org/wiki/Event_(computing))
+In order to receive input from keyboard/mouse/etc. in MiniLibX, you need to know the concept of [events](https://en.wikipedia.org/wiki/Event_(computing)). An event is an action or event that can be detected and handled by a program. miniLibX `mlx_loop()` needs a loop statement to handle events. This function waits for an event to be received and generates the event.
 
 ## Usage 
 
