@@ -105,7 +105,12 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 ```
 We will use `my_mlx_pixel_put` because `mlx_pixel_put` is very, very slow. This is because when you put a pixel on the window, it immidiately loads the frame before it is fully rendered. For this reason we will buffer all pixels before loading them into the window. 
 
+Finally, we can draw an image inside a specific window with a `mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y);`
+The first three parameters specify the identifiers of the mlx, window, and image created, specify the coordinates of the image.
 
+### 4. Using keyboard
+
+In order to receive input from keyboard/mouse/etc. in MiniLibX, you need to know the concept of [events](https://en.wikipedia.org/wiki/Event_(computing))
 
 ## Usage 
 
