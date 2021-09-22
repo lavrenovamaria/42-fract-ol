@@ -37,7 +37,7 @@ typedef struct		s_complex
 
 ## Let's draw a pixel on the screen!
 
-1. Initializing
+### 1. Initializing. 
 Before doing anything, we need to include <mlx.h> library. To init MinilibX, let's start with this:
 
 ```c
