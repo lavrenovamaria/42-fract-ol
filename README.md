@@ -50,6 +50,22 @@ int main(void)
 	mlx = mlx_init();
 }
 ```
+### 2. Open the window
+When we run the previous code, nothing pops up and nothing is rendered, because we didn't create the window. Call `mlx_new_window` to open a window. This function returns a pointer to the window we just created. We can also give a height, width and a title to our window. And we need to call `mlx_loop` to render the window. 
+```c
+#include <mlx.h>
+
+int main(void)
+{
+	void *mlx;
+	void *mlx_win;
+	
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "mlx_test");
+	mlx_loop(mlx);
+}
+```
+Now we have a window with 1920 width, 1080 height and "mlx_test" title.
 
 ```c
 typedef struct		s_data {
