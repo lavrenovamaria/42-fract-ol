@@ -12,6 +12,7 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 * [Veritasium: this equation will change how you see the world](https://www.youtube.com/watch?v=ovJcsL7vyrk)
 
 * [Vsauce: the Mandelbrot Set](https://www.youtube.com/watch?v=MwjsO6aniig)
+* [The Mandelbrot Set Explained](https://www.youtube.com/watch?v=7MotVcGvFMg)
 
 * [42Docs. MiniLibX. Getting started](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
 
