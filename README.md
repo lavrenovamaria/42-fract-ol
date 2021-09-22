@@ -87,9 +87,9 @@ int offset = (y * line_length + x * (bits_per_pixel / 8));
 Since `line_length` is the number of bytes in one horizontal line of the image, it is moved to a memory address equal to the y-coordinate of the pixel coordinate as (line_length * y-coordinate). Since `bits_per_pixel` is the number of bits per pixel, dividing by 8 to convert to bytes gives bytes per pixel. (bits_per_pixel / 8 * y coordinate) You can finally get the memory address of the pixel at (x, y) coordinates by moving the memory address as much as the x coordinate.
 
 `mlx_get_data_addr` returns the address of the starting point in memory where the image is stored as a char * type pointer. If mlx_get_data_addr() is called successfully, values are assigned to the following three parameters:
-* The number of bits required to express the color of a pixel is entered in the bits_per_pixel parameter.
-* In the size_line parameter, the number of bytes required to store one image line is entered.
-* The endian parameter indicates whether the pixel color is stored in little endian (0 specified) or big endian (1 specified).
+* The number of bits required to express the color of a pixel is entered in the `bits_per_pixel` parameter.
+* In the `line_lenght` parameter, the number of bytes required to store one image line is entered.
+* The `endian` parameter indicates whether the pixel color is stored in little endian (0 specified) or big endian (1 specified).
 
 
 
