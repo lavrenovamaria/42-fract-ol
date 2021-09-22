@@ -26,7 +26,7 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 The Mandelbrot set with the real and imaginary axes labeled.
 
 
-```python
+```c
 typedef struct		s_complex
 {
 	double			re;
@@ -39,7 +39,7 @@ typedef struct		s_complex
 1. Initializing
 Before doing anything, we need to include <mlx.h> library. To init MinilibX, let's start with this:
 
-```python
+```c
 typedef struct		s_data {
 	void	*img;
 	char	*addr;
