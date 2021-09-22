@@ -23,6 +23,7 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 ## Knowledge of fractol. The Mandelbrot Set
 
 <img width="746" alt="Screen Shot 2021-09-20 at 12 29 05 PM" src="https://user-images.githubusercontent.com/84707645/133981535-b4c77c88-b3ff-4c00-aa5d-eb98a145ec19.png">
+
 The Mandelbrot set with the real and imaginary axes labeled.
 
 
@@ -38,6 +39,17 @@ typedef struct		s_complex
 
 1. Initializing
 Before doing anything, we need to include <mlx.h> library. To init MinilibX, let's start with this:
+
+```c
+#include <mlx.h>
+
+int main(void)
+{
+	void *mlx;
+	
+	mlx = mlx_init();
+}
+```
 
 ```c
 typedef struct		s_data {
