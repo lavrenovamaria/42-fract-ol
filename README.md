@@ -67,6 +67,8 @@ int main(void)
 ```
 Now we have a window with 1920 width, 1080 height and "mlx_test" title.
 
+### 3. Draw!
+
 ```c
 typedef struct		s_data {
 	void	*img;
