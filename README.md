@@ -19,7 +19,7 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 
 * [RGBA color model](https://en.wikipedia.org/wiki/RGBA_color_model#Representation)
 
-## Knowledge of fractol
+## Knowledge of fractol. The Mandelbrot Set
 
 <img width="746" alt="Screen Shot 2021-09-20 at 12 29 05 PM" src="https://user-images.githubusercontent.com/84707645/133981535-b4c77c88-b3ff-4c00-aa5d-eb98a145ec19.png">
 The Mandelbrot set with the real and imaginary axes labeled.
