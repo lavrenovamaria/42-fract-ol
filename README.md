@@ -78,6 +78,11 @@ typedef struct		s_data {
 	int	endian;
 }			t_data;
 
+```
+Since pixel is basically an int type, it is 4 bytes. But this can be different if we are dealing with small endian. `bits_per_pixel` is total number of bits stored for each pixel in a graphic image.
+
+
+```c
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
