@@ -53,6 +53,9 @@ int main(void)
 ```
 ### 2. Open the window
 When we run the previous code, nothing pops up and nothing is rendered, because we didn't create the window. Call `mlx_new_window` to open a window. This function returns a pointer to the window we just created. We can also give a height, width and a title to our window. And we need to call `mlx_loop` to render the window. 
+* Both X-Window and MacOSX graphical systems are bi-directionnal. On one hand, the program sends orders to the screen to display pixels, images, and so on. On the other hand, it can get information from the keyboard and mouse associated to the screen. To do so, the program receives "events" from the keyboard or the mouse. To receive events, you must use this function. This function never returns. It is an infinite loop that waits for an event, and then calls a user-defined function associated with this event. A single parameter is needed, the connection identifier mlx.
+* 
+`int mix_loop(void *mlx_ptr)` 
 ```c
 #include <mlx.h>
 
@@ -88,11 +91,9 @@ We can get it with the following formula:
 Since `line_length` is the number of bytes in one horizontal line of the image, it is moved to a memory address equal to the y-coordinate of the pixel coordinate as (line_length * y-coordinate). Since `bits_per_pixel` is the number of bits per pixel, dividing by 8 to convert to bytes gives bytes per pixel. (bits_per_pixel / 8 * y coordinate) You can finally get the memory address of the pixel at (x, y) coordinates by moving the memory address as much as the x coordinate.
 
 `mlx_get_data_addr` returns the address of the starting point in memory where the image is stored as a char * type pointer. If mlx_get_data_addr() is called successfully, values are assigned to the following three parameters:
-* The number of bits required to express the color of a pixel is entered in the `bits_per_pixel` parameter.
-* In the `line_lenght` parameter, the number of bytes required to store one image line is entered.
+* `bits_per_pixel` will be filled with the number of bits needed to represent a pixel color (also called the depth of the image).
+* `line_lenght` is the number of bytes used to store one line of the image in memory. This information is needed to move from one line to another in the image.
 * The `endian` parameter indicates whether the pixel color is stored in little endian (0 specified) or big endian (1 specified).
-
-
 
 
 ```c
@@ -107,7 +108,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 We will use `my_mlx_pixel_put` because `mlx_pixel_put` is very, very slow. This is because when you put a pixel on the window, it immidiately loads the frame before it is fully rendered. For this reason we will buffer all pixels before loading them into the window. 
 
 Finally, we can draw an image inside a specific window with a `mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y);`
-* The first three parameters specify the identifiers of the mlx, window, and image created, specify the coordinates of the image.
+* Can draw inside image, and can dump the image inside a specified window at any time to display it on the screen. Three identifiers are needed here, for the connection to the display, the window to use, and the image. The (x, y) coordinates define where the image should be placed in the window.
 
 ### 4. Using keyboard
 
