@@ -90,9 +90,11 @@ Since pixel is basically an int type, it is 4 bytes. But this can be different i
 We can get it with the following formula:
 * int offset = (y * line_length + x * (bits_per_pixel / 8));
 
-Since `line_length` is the number of bytes in one horizontal line of the image, it is moved to a memory address equal to the y-coordinate of the pixel coordinate as (line_length * y-coordinate). Since `bits_per_pixel` is the number of bits per pixel, dividing by 8 to convert to bytes gives bytes per pixel. (bits_per_pixel / 8 * y coordinate) You can finally get the memory address of the pixel at (x, y) coordinates by moving the memory address as much as the x coordinate.
+Since `line_length` is the number of bytes in one horizontal line of the image, it is moved to a memory address equal to the y-coordinate of the pixel coordinate as (line_length * y-coordinate). Since `bits_per_pixel` is the number of bits per pixel, dividing by 8 to convert to bytes gives bytes per pixel. (bits_per_pixel / 8 * y coordinate) You can finally get the memory address of the pixel at (x, y) coordinates by moving the memory address as much as the x coordinate.\
 
-`mlx_get_data_addr` returns the address of the starting point in memory where the image is stored as a char * type pointer. If mlx_get_data_addr() is called successfully, values are assigned to the following three parameters:
+`char	*mlx_get_data_addr(void *img_ptr, int *bits_per_pixel, int *size_line, int *endian);`
+
+`mlx_get_data_addr` returns the address of the starting point in memory where the image is stored as a char * type pointer. We're getting a pointer on `char`, which usually means we're going to naviguate in the array one byte at a time (not one pixel at a time, a pixel usually takes more than one byte as we've seen before). If mlx_get_data_addr() is called successfully, values are assigned to the following three parameters:
 * `bits_per_pixel` will be filled with the number of bits needed to represent a pixel color (also called the depth of the image).
 * `line_lenght` is the number of bytes used to store one line of the image in memory. This information is needed to move from one line to another in the image.
 * The `endian` parameter indicates whether the pixel color is stored in little endian (0 specified) or big endian (1 specified).
