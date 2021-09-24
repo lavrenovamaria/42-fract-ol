@@ -10,14 +10,12 @@ Subject is presented in the [en.subject.pdf](https://github.com/lavrenovamaria/4
 ## Credits 
 
 * [Veritasium: this equation will change how you see the world](https://www.youtube.com/watch?v=ovJcsL7vyrk)
-
 * [Vsauce: the Mandelbrot Set](https://www.youtube.com/watch?v=MwjsO6aniig)
 * [The Mandelbrot Set Explained](https://www.youtube.com/watch?v=7MotVcGvFMg)
-
 * [42Docs. MiniLibX. Getting started](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
-
 * [MiniLibX. Basic introduction, tutorials, tips & tricks.](https://gontjarow.github.io/MiniLibX/mlx-tutorial-create-image.html) 
 * [Pixel drawing with the minilibx](https://aurelienbrabant.fr/blog/pixel-drawing-with-the-minilibx)
+* [Managing events with the minilibx](https://aurelienbrabant.fr/blog/events-with-the-minilibx)
 
 * [RGBA color model](https://en.wikipedia.org/wiki/RGBA_color_model#Representation)
 
