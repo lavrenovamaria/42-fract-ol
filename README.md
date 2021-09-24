@@ -92,7 +92,21 @@ Since pixel is basically an int type, it is 4 bytes. But this can be different i
 We can get it with the following formula:
 * int offset = (y * line_length + x * (bits_per_pixel / 8));
 
-Since `line_length` is the number of bytes in one horizontal line of the image, it is moved to a memory address equal to the y-coordinate of the pixel coordinate as (line_length * y-coordinate). Since `bits_per_pixel` is the number of bits per pixel, dividing by 8 to convert to bytes gives bytes per pixel. (bits_per_pixel / 8 * y coordinate) You can finally get the memory address of the pixel at (x, y) coordinates by moving the memory address as much as the x coordinate.
+For this example, let's assume we want to get the pixel at coordinates (5, 10). What we want is the 5th pixel of the 10th row. Window/image dimensions are 600x300.
+
+To begin with, let's find the correct row. The previous `mlx_get_data_addr` call provided us the `line_len` value, which is basically the amount of bytes taken by one row of our image. It is equivalent to `image_width * (bpp / 8)`.
+
+In our case, an `int` is four bytes, so it is `600 * 4 = 2400`. Therefore we can say that the first row begins at the index `0`, the second one at the index `2400`, the third one at the index `4800`, and so on. Thus we can find the correct row index by doing `2400 * 10`.
+
+To find the correct column, we will need to move in the row by the given number of pixels. In our case, we want to move 5 pixels "right". To do that, we need to multiply `5` by the number of bytes a pixel actually takes (here `4`). Thus we will do `5 * 4 = 20`.
+
+If we summarize, we can find the correct index with the following computation: `index = 2400 * 10 + 5 * 4`.
+
+That's it! We just need to generalize the formula using the values `mlx_get_data_addr` provided us. The following formula is the one we'll use:
+
+`index = line_len * y + x * (bpp / 8)`
+
+Since `line_length` is the number of bytes in one horizontal line of the image, it is moved to a memory address equal to the y-coordinate of the pixel coordinate as (line_length * y-coordinate). Since `bits_per_pixel` is the number of bits per pixel, dividing by 8 to convert to bytes gives bytes per pixel. (bits_per_pixel / 8 * y coordinate). You can finally get the memory address of the pixel at (x, y) coordinates by moving the memory address as much as the x coordinate.
 
 `char	*mlx_get_data_addr(void *img_ptr, int *bits_per_pixel, int *size_line, int *endian);`
 
