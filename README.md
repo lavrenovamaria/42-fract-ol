@@ -85,12 +85,13 @@ typedef struct		s_data {
 }			t_data;
 
 ```
-Since pixel is basically an int type, it is 4 bytes. But this can be different if we are dealing with small endian. `bits_per_pixel` is total number of bits stored for each pixel in a graphic image. We also need to understand that bytes are not aligned, so `line_length` may be different from the actual window width. So we need `mlx_get_data_addr` to compute the memory address offset with the line lenght set through.
+Since pixel is basically an int type, it is 4 bytes. But this can be different if we are dealing with small endian.\
+`void *img` refers to the address `mlx_new_image` returns. `bits_per_pixel` is total number of bits stored for each pixel in a graphic image. We also need to understand that bytes are not aligned, so `line_length` may be different from the actual window width. So we need `mlx_get_data_addr` to compute the memory address offset with the line lenght set through.
 
 We can get it with the following formula:
 * int offset = (y * line_length + x * (bits_per_pixel / 8));
 
-Since `line_length` is the number of bytes in one horizontal line of the image, it is moved to a memory address equal to the y-coordinate of the pixel coordinate as (line_length * y-coordinate). Since `bits_per_pixel` is the number of bits per pixel, dividing by 8 to convert to bytes gives bytes per pixel. (bits_per_pixel / 8 * y coordinate) You can finally get the memory address of the pixel at (x, y) coordinates by moving the memory address as much as the x coordinate.\
+Since `line_length` is the number of bytes in one horizontal line of the image, it is moved to a memory address equal to the y-coordinate of the pixel coordinate as (line_length * y-coordinate). Since `bits_per_pixel` is the number of bits per pixel, dividing by 8 to convert to bytes gives bytes per pixel. (bits_per_pixel / 8 * y coordinate) You can finally get the memory address of the pixel at (x, y) coordinates by moving the memory address as much as the x coordinate.
 
 `char	*mlx_get_data_addr(void *img_ptr, int *bits_per_pixel, int *size_line, int *endian);`
 
