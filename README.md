@@ -77,13 +77,13 @@ Now we have a window with 1920 width, 1080 height and "mlx_test" title.
 ### 3. Draw!
 
 ```c
-typedef struct		s_data {
+typedef struct		s_img {
 	void	*img;
 	char	*addr;
 	int	bits_per_pixel;
 	int	line_length;
 	int	endian;
-}			t_data;
+}			t_img;
 
 ```
 Since pixel is basically an int type, it is 4 bytes. But this can be different if we are dealing with small endian.\
@@ -103,12 +103,12 @@ Since `line_length` is the number of bytes in one horizontal line of the image, 
 
 
 ```c
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	char	*dst;
+	char	*pixel;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int*)pixel = color;
 }
 ```
 We will use `my_mlx_pixel_put` because `mlx_pixel_put` is very, very slow. This is because when you put a pixel on the window, it immidiately loads the frame before it is fully rendered. For this reason we will buffer all pixels before loading them into the window. 
