@@ -135,6 +135,7 @@ In order to receive input from keyboard/mouse/etc. in MiniLibX, you need to know
 
 `int mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct_ptr)(), void *param);`
 * First, specify the identifier of the window for which you want to generate an event, then specify the event [status](https://refspecs.linuxfoundation.org/LSB_3.2.0/LSB-Desktop-generic/LSB-Desktop-generic/libx11-ddefs.html), then mask, next parameter is a function pointer parameter that receives the address of the function to be executed when the corresponding event occurs, and last is a parameter that sends parameter data necessary for the function called with.
+* `func_ptr` is a pointer to a function that returns an int and that takes undefined parameters. Beware, `(*func_ptr)()` is not the same as `(*func_ptr)(void)`: the last means NO argument while the first means "any set of arguments".
 
 ## Usage 
 
