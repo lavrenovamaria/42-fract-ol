@@ -53,6 +53,7 @@ int main(void)
 	mlx = mlx_init();
 }
 ```
+`mlx_init` creates a structure that contains all the stuff the minilibx will need in order to do its things.
 ### 2. Open the window
 When we run the previous code, nothing pops up and nothing is rendered, because we didn't create the window. Call `mlx_new_window` to open a window. This function returns a pointer to the window we just created. We can also give a height, width and a title to our window. And we need to call `mlx_loop` to render the window.\
 `int mix_loop(void *mlx_ptr)` 
