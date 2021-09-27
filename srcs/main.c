@@ -45,22 +45,12 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-// int	handle_keypress(int keysym, t_fractal *fractal)
-// {
-// 	if (keysym == XK_Escape)
-// 		mlx_destroy_window(fractal->mlx_ptr, fractal->win_ptr);
-// 	return (0);
-// }
 
-// int	handle_keyrelease(int keysym, void *fractal)
-// {
-// 	return (0);
-// }
 int mandelbrot(t_fractal *fractal)
 {
 	t_complex	z;
 	t_complex	c;
-	int color = 0xFFFFFF;
+	int color = encode_rgb(255, 255, 255);
 	double		x = 0;
 	double		y = 0;
 	double		a = 0;
@@ -87,7 +77,7 @@ int mandelbrot(t_fractal *fractal)
 			}
 			if (iter <= 0)
 			{
-				my_mlx_pixel_put(fractal->img, x, y, 0xFFFFFF);
+				my_mlx_pixel_put(fractal->img, x, y, color);
 			}
 			else
 			{
@@ -103,7 +93,17 @@ int mandelbrot(t_fractal *fractal)
 	return (0);
 }
 
-
+static void	print_names_fractals(void)
+{
+	ft_putendl("╔════════════════════════════════════════════════════╗");
+	ft_putendl("║                       Fact'ol                      ║");
+	ft_putendl("╠════════════════════════════════════════════════════╣");
+	ft_putendl("║                   *1- Mandelbrot                   ║");
+	ft_putendl("║                   *2- Julia                        ║");
+	ft_putendl("║                   *3- Burning Ship                 ║");
+	ft_putendl("╚════════════════════════════════════════════════════╝");
+	exit(0);
+}
 
 int	main(void)
 {
@@ -112,23 +112,19 @@ int	main(void)
 
 	fractal.calibr = 100;
 
+	if (argc != 2)
+		print_names_fractals();
 	fractal.mlx_ptr = mlx_init();
 	fractal.win_ptr = mlx_new_window(fractal.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "mlx_test");
+	if (data.win_ptr == NULL)
+	{
+		free(data.win_ptr);
+		return (MLX_ERROR);
+	}
 	img.img = mlx_new_image(fractal.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	fractal.img = &img;
-	// if (fractal.mlx_ptr == NULL)
-	// 	return (MLX_ERROR);
-	// if (fractal.win_ptr == NULL)
-	// {
-	// 	free(fractal.win_ptr);
-	// 	return (MLX_ERROR);
-	// }
-	//mlx_hook(fractal.mlx_ptr, &my_mlx_pixel_put, &fractal);
-	// mlx_hook(fractal.win_ptr, WHEEL, MASK_WHEEL, &wheel_hook, &fractal);
-	// mlx_hook(fractal.win_ptr, KEY_PRESS, MASK_KEY_PRESS, &keyboard_hook, &fractal);
 	mandelbrot(&fractal);
 	mlx_loop(fractal.mlx_ptr);
-	//mlx_destroy_display(fractal.mlx_ptr);
-	//free(fractal.mlx_ptr);
+	free(data.mlx_ptr);
 }
