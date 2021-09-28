@@ -37,6 +37,56 @@ t_complex complex_sum(t_complex num1, t_complex num2)
 	result.im = num1.im + num2.im;
 	return result;
 }
+int		ft_int_rgb(int r, int g, int b)
+{
+	int c;
+
+	c = r;
+	c = (c << 8) | g;
+	c = (c << 8) | b;
+	return (c);
+}
+
+int		ft_color_re(t_fractal *fractal, double t)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	if (fractal->rgb == 2)
+	{
+		r = (int)(8 * (1 - t) * t * t * t * 255);
+		g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+		b = (int)(9 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	}
+	else
+	{
+		b = (int)(8 * (1 - t) * t * t * t * 255);
+		g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+		r = (int)(9 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	}
+	return (ft_int_rgb(r, g, b));
+}
+
+int		ft_color(t_fractal *fractal)
+{
+	double	t;
+	int		r;
+	int		g;
+	int		b;
+
+	t = fractal->it / fractal->max_it;
+	if (fractal->rgb == 1)
+	{
+		r = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+		b = (int)(8 * (1 - t) * t * t * t * 255);
+		g = (int)(9 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+		return (ft_int_rgb(r, g, b));
+	}
+	else
+		r = ft_color_re(fractal, t);
+	return (r);
+}
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -50,7 +100,9 @@ int mandelbrot(t_fractal *fractal)
 {
 	t_complex	z;
 	t_complex	c;
-	int color = encode_rgb(255, 255, 255);
+	t_fractal fr;
+	int color = 0xFFFFFF; //норм строчка
+	// int color2 = ft_color(fr->color);
 	double		x = 0;
 	double		y = 0;
 	double		a = 0;
@@ -77,11 +129,12 @@ int mandelbrot(t_fractal *fractal)
 			}
 			if (iter <= 0)
 			{
-				my_mlx_pixel_put(fractal->img, x, y, color);
+				my_mlx_pixel_put(fractal->img, x, y, 0x000000);
 			}
 			else
 			{
-				my_mlx_pixel_put(fractal->img, x, y, 0xFE3D43);
+				color = iter * 125; //норм строчка, работает
+				my_mlx_pixel_put(fractal->img, x, y, color);
 			}
 			iter = 50;
 			y++;
@@ -93,17 +146,17 @@ int mandelbrot(t_fractal *fractal)
 	return (0);
 }
 
-static void	print_names_fractals(void)
-{
-	ft_putendl("╔════════════════════════════════════════════════════╗");
-	ft_putendl("║                       Fact'ol                      ║");
-	ft_putendl("╠════════════════════════════════════════════════════╣");
-	ft_putendl("║                   *1- Mandelbrot                   ║");
-	ft_putendl("║                   *2- Julia                        ║");
-	ft_putendl("║                   *3- Burning Ship                 ║");
-	ft_putendl("╚════════════════════════════════════════════════════╝");
-	exit(0);
-}
+// static void	print_names_fractals(void)
+// {
+// 	ft_putendl("╔════════════════════════════════════════════════════╗");
+// 	ft_putendl("║                       Fact'ol                      ║");
+// 	ft_putendl("╠════════════════════════════════════════════════════╣");
+// 	ft_putendl("║                   *1- Mandelbrot                   ║");
+// 	ft_putendl("║                   *2- Julia                        ║");
+// 	ft_putendl("║                   *3- Burning Ship                 ║");
+// 	ft_putendl("╚════════════════════════════════════════════════════╝");
+// 	exit(0);
+// }
 
 int	main(void)
 {
@@ -112,19 +165,19 @@ int	main(void)
 
 	fractal.calibr = 100;
 
-	if (argc != 2)
-		print_names_fractals();
+	// if (argc != 2)
+	// 	print_names_fractals();
 	fractal.mlx_ptr = mlx_init();
 	fractal.win_ptr = mlx_new_window(fractal.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "mlx_test");
-	if (data.win_ptr == NULL)
-	{
-		free(data.win_ptr);
-		return (MLX_ERROR);
-	}
+	// if (data.win_ptr == NULL)
+	// {
+	// 	free(data.win_ptr);
+	// 	return (MLX_ERROR);
+	// }
 	img.img = mlx_new_image(fractal.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	fractal.img = &img;
 	mandelbrot(&fractal);
 	mlx_loop(fractal.mlx_ptr);
-	free(data.mlx_ptr);
+	// free(data.mlx_ptr);
 }
