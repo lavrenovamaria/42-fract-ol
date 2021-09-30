@@ -10,6 +10,8 @@
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 600
+#define MOVE_UD 50
+#define MOVE_RL 50
 
 #define MLX_ERROR -1
 
@@ -48,9 +50,12 @@ typedef struct	s_fractal
 	t_data		*img;
 	int			calibr;
 	int			rgb;
+	int			right_left;
+	int			up_down;
 	double		max_it;
 	double		it;
 	t_color		color;
+	// int (*fractol_func) (struct s_fractal *);
 }				t_fractal;
 
 
