@@ -7,11 +7,18 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 600
-#define MOVE_UD 50
-#define MOVE_RL 50
+# define WINDOW_WIDTH 500
+# define WINDOW_HEIGHT 500
+# define MOVE_UD 50
+# define MOVE_RL 50
+# define C_CHNG_ST 50
+# define ZOOM_PAR 5
+# define JULIA_P 500
+# define PARAM 20
+# define ITER 50
+# define UI	unsigned int
 
 #define MLX_ERROR -1
 
@@ -42,6 +49,14 @@ typedef union s_color
 	};
 }	t_color;
 
+// typedef struct	s_color
+// {
+// 	int decimal;
+// 	int r;
+// 	int g;
+// 	int b;
+// }				t_color;
+
 
 typedef struct	s_fractal
 {
@@ -55,6 +70,11 @@ typedef struct	s_fractal
 	double		max_it;
 	double		it;
 	t_color		color;
+	double		mouse_rl;
+	double		mouse_ud;
+	unsigned char	color_shift;
+	double			bright_shift;
+	int			palette;
 	// int (*fractol_func) (struct s_fractal *);
 }				t_fractal;
 

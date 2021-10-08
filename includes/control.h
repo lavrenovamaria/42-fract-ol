@@ -29,6 +29,7 @@
 // # define KEY_MINUS			65453
 // # define KEY_PLUS			65451
 // # define KEY_C				99
+// # define KEY_Z				122
 // # define SCROLL_UP			4
 // # define SCROLL_DOWN			5
 // # define KEY_PRESS			2
