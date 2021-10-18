@@ -1,62 +1,72 @@
-NAME			=	fractol
+NAME = fractol
 
-SRCS_DIR		=	./srcs/
+GCC = gcc
+FLAGS = #-Wall -Werror -Wextra
 
-OBJS_DIR		=	./objs/
+LIBFT = $(LIBDIR)libft.a
+LIBDIR = ./libft/
+LIB_HEAD = $(LIBDIR)includes/
 
-HEADERS_DIR		=	./includes/
+MINILIBX = $(MINILIBX_DIRECTORY)libmlx.a
+MINILIBX_DIRECTORY = ./mlx/
+MINILIBX_HEADERS = $(MINILIBX_DIRECTORY)
 
-LIBFT_DIR		=	./libft/
+HEADERS_LIST = \
+	fractol.h\
 
-SRCS			=	$(SRCS_DIR)	
+HEADERS_DIRECTORY = ./includes/
+HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
+SOURCES_DIRECTORY = ./sources/
+SOURCES_LIST = \
+	color.c\
+	control_keyboard.c\
+	control_mouse.c\
+	draw.c\
+	fractals_formulas.c\
+	fractol.c\
+	utils.c\
 
+SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
+OBJECTS_DIRECTORY = objects/
+OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))
+OBJECTS	= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
-HEADERS			=	$(wildcard $(HEADERS_DIR)*.h)
+LIBRARIES = -lmlx -lm -lft\
+	-L$(LIBDIR) -L$(MINILIBX_DIRECTORY)\
+	-framework OpenGL -framework AppKit
+INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIB_HEAD) -I$(MINILIBX_HEADERS)
 
-OBJS			=	$(addprefix $(OBJS_DIR), $(notdir $(SRCS:.c=.o)))
+all: $(NAME)
 
-CC				=	gcc
+$(NAME): $(LIBFT) $(MINILIBX) $(OBJECTS_DIRECTORY) $(OBJECTS)
+	@$(GCC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) -o $(NAME)
 
-CFLAGS			=	-Wall -Wextra -Werror
+$(OBJECTS_DIRECTORY):
+	@mkdir -p $(OBJECTS_DIRECTORY)
 
-LDFLAGS			=	-L$(LIBMLX_DIR) -lmlx -L$(LIBFT_DIR) -lft -framework OpenGL -framework Appkit -O3
-
-RM				=	rm -f
-
-LIBFT			=	$(addprefix $(LIBFT_DIR), libft.a)
-
-LIBMLX			=	$(addprefix $(LIBMLX_DIR), libmlx.a)
-
-LIBFT_DIR		=	./libft/
-
-LIBMLX_DIR		=	./mlx/
-
-all:	$(LIBFT) $(LIBMLX) $(NAME)
-$(OBJS_DIR)%.o:	$(SRCS_DIR)%.c $(HEADERS) $(LIBFT) $(LIBMLX) | $(OBJS_DIR)
-	$(CC) $(CFLAGS) -O3 -I$(HEADERS_DIR) -Imlx -c $< -o $@
+$(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c $(HEADERS)
+	@$(GCC) $(FLAGS) -c $(INCLUDES) $< -o $@
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	@$(MAKE) -sC $(LIBDIR)
 
-$(LIBMLX):
-	make -C $(LIBMLX_DIR)
-
-$(NAME): $(OBJS) $(LIBFT) $(LIBMLX)
-	$(CC) $(OBJS) -o $@ $(LDFLAGS)
+$(MINILIBX):
+	@$(MAKE) -sC $(MINILIBX_DIRECTORY)
 
 clean:
-		$(RM) -r $(OBJS_DIR)
-		make clean -C $(LIBFT_DIR) fclean
+	@$(MAKE) -sC $(LIBDIR) clean
+	@$(MAKE) -sC $(MINILIBX_DIRECTORY) clean
+	@rm -rf $(OBJECTS_DIRECTORY)
 
 fclean: clean
-		$(RM) $(NAME)
-		make clean -C $(LIBFT_DIR) fclean
+	@rm -f $(MINILIBX)
+	@$(MAKE) -sC $(LIBDIR) fclean
+	@rm -f $(NAME)
 
-$(OBJS_DIR):
-	mkdir $(OBJS_DIR)
+re:
+	@$(MAKE) fclean
+	@$(MAKE) all
 
-re:	fclean $(OBJS_DIR) all
-
-.PHONY:	all clean fclean re
+.PHONY: all clean fclean re

@@ -1,44 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   control.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wrickard <wrickard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/09 22:48:44 by wrickard          #+#    #+#             */
+/*   Updated: 2021/10/09 23:13:38 by wrickard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONTROL_H
+
 # define CONTROL_H
 
-# define KEY_ESC				53
-# define KEY_LEFT				123
-# define KEY_RIGHT				124
-# define KEY_DOWN				125
-# define KEY_MINUS				78
-# define KEY_UP					126
-# define KEY_PLUS				69
-# define KEY_Z					6
-# define KEY_X					7
-# define KEY_C					8
-# define SCROLL_UP				4
-# define SCROLL_DOWN			5
-# define KEY_PRESS				2
-# define KEY_RELEASE			3
-# define WHEEL					4
-# define BUTTON_RELEASE			5
-# define MOTION_NOTIFY			6
-# define EXPOSE					12
-# define DESTROY				17
+# define MOUSE_SCROLL_UP	4
+# define MOUSE_SCROLL_DOWN	5
 
-// # define KEY_ESC				65307
-// # define KEY_LEFT			65361
-// # define KEY_RIGHT			65363
-// # define KEY_DOWN			65364
-// # define KEY_UP				65362
-// # define KEY_MINUS			65453
-// # define KEY_PLUS			65451
-// # define KEY_C				99
-// # define KEY_Z				122
-// # define SCROLL_UP			4
-// # define SCROLL_DOWN			5
-// # define KEY_PRESS			2
-// # define KEY_RELEASE			3
-// # define WHEEL				4
-// # define BUTTON_RELEASE		5
-// # define MOTION_NOTIFY		6
-// # define EXPOSE				12
-// # define DESTROY				17
+# define KEY_UP				126
+# define KEY_DOWN			125
+# define KEY_LEFT			123
+# define KEY_RIGHT			124
+# define KEY_PRESS			2
+
+# define MAIN_PAD_ESC		53
+# define MAIN_PAD_SPACE		49
+# define MAIN_PAD_C			8
+# define MAIN_PAD_H			4
+# define MAIN_PAD_R			15
+# define MAIN_PAD_PLUS		24
+# define MAIN_PAD_MINUS		27
 
 # define MASK_KEY_PRESS			1L
 # define MASK_KEY_RELEASE		2L
@@ -53,30 +44,3 @@
 # define SHIFT					0.11
 
 #endif
-
-// 0L		NoEventMask
-// (1L<<0)	KeyPressMask
-// (1L<<1)	KeyReleaseMask
-// (1L<<2)	ButtonPressMask
-// (1L<<3)	ButtonReleaseMask
-// (1L<<4)	EnterWindowMask
-// (1L<<5)	LeaveWindowMask
-// (1L<<6)	PointerMotionMask
-// (1L<<7)	PointerMotionHintMask
-// (1L<<8)	Button1MotionMask
-// (1L<<9)	Button2MotionMask
-// (1L<<10)	Button3MotionMask
-// (1L<<11)	Button4MotionMask
-// (1L<<12)	Button5MotionMask
-// (1L<<13)	ButtonMotionMask
-// (1L<<14)	KeymapStateMask
-// (1L<<15)	ExposureMask
-// (1L<<16)	VisibilityChangeMask
-// (1L<<17)	StructureNotifyMask
-// (1L<<18)	ResizeRedirectMask
-// (1L<<19)	SubstructureNotifyMask
-// (1L<<20)	SubstructureRedirectMask
-// (1L<<21)	FocusChangeMask
-// (1L<<22)	PropertyChangeMask
-// (1L<<23)	ColormapChangeMask
-// (1L<<24)	OwnerGrabButtonMask
